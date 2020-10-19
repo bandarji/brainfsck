@@ -14,6 +14,7 @@ class Tape:
         if self.content[self.ins_ptr] == '[':
             self.skip_preamble = True
             self.jmp_fwd()
+            self.skip_preamble = False
 
     def instruction(self):
         return self.content[self.ins_ptr]
@@ -51,6 +52,7 @@ class Tape:
             self.ins_ptr += 1
             while self.ins_ptr < self.length:
                 if self.content[self.ins_ptr] == ']' and opens == 0:
+                    self.ins_ptr += 1
                     break  # matching close bracket discovered
                 elif self.content[self.ins_ptr] == '[':
                     opens += 1
@@ -67,6 +69,7 @@ class Tape:
             self.ins_ptr -= 1
             while self.ins_ptr >= 0:
                 if self.content[self.ins_ptr] == '[' and closes == 0:
+                    self.ins_ptr -= 1
                     break
                 elif self.content[self.ins_ptr] == ']':
                     closes += 1

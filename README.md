@@ -30,7 +30,7 @@ $ bf.py --help
 + increment the value at the position pointer (255 rotates to zero)
 - decrement the value at the position pointer (0 rotates to 255)
 > increment the position pointer (rotate to 0 at tape end)
-< decrement the position pointer (rotate to 2999 at tape end)
+< decrement the position pointer (rotate to 29999 at tape end)
 ```
 
 ## Tests
