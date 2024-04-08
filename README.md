@@ -1,12 +1,21 @@
 # brainfsck
 
-My interpreter for Urban Müller's esoteric programming language, Brainfuck, written in Python.
+My interpreter for Urban Müller's esoteric programming language, Brainfuck,
+written in Go and Python.
 
 ## References
 
 1. [Wikipedia article](https://en.wikipedia.org/wiki/Brainfuck)
 
 ## Usage
+
+### Go
+
+```
+make build && ./bf <fsck'd file>
+```
+
+### Python
 
 ```
 $ bf.py --help
@@ -22,15 +31,16 @@ $ bf.py --help
 
 ## Commands
 
-```
-[ jump to position after corresponding right bracket, if zero
-] jump back to corresponding left bracket, if not zero
-, accept one input byte
-. output value at the position pointer
-+ increment the value at the position pointer (255 rotates to zero)
-- decrement the value at the position pointer (0 rotates to 255)
-> increment the position pointer (rotate to 0 at tape end)
-< decrement the position pointer (rotate to 29999 at tape end)
+| Instruction | Description |
+| :--- | :--- |
+| `[` | jump to position after corresponding right bracket, if zero |
+| `]` | jump back to corresponding left bracket, if not zero |
+| `,` | accept one input byte |
+| `.` | output value at the position pointer |
+| `+` | increment the value at the position pointer (255 rotates to zero) |
+| `-` | decrement the value at the position pointer (0 rotates to 255) |
+| `>` | increment the position pointer (rotate to 0 at tape end) |
+| `<` | decrement the position pointer (rotate to 29999 at tape end) |
 ```
 
 ## Tests
@@ -38,5 +48,6 @@ $ bf.py --help
 This repository includes test files. The following string should produce "Hello World!".
 
 ```
-++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.
+++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>
+---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.
 ```
